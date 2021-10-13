@@ -4,7 +4,7 @@ import Router from "./Router";
 function App() {
   useDarkMode();
   return (
-    <div className="dark:bg-gray-800">
+    <div className="dark:bg-primary w-full">
       <Router></Router>
     </div>
   );

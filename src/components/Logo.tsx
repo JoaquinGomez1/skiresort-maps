@@ -4,7 +4,9 @@ export default function Logo() {
       <div className=" px-4 py-2 rounded-full bg-gray-600 text-2xl text-white flex items-center">
         S
       </div>
-      <h1 className="text-xl font-bold dark:text-white">Skitrips</h1>
+      <h1 className="text-xl font-bold dark:text-white hidden md:block">
+        Skitrips
+      </h1>
     </div>
   );
 }
