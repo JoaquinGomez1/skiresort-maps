@@ -12,9 +12,9 @@ export default function Pill({ imageUrl, name, action }: PillProps) {
     >
       <div className="flex space-x-2 items-center">
         <img className="rounded-full w-6 h-6" src={imageUrl} alt={name} />
-        <p className="text-gray-500">{name}</p>
+        <p className="text-light">{name}</p>
       </div>
-      <i className="fas fa-caret-down dark:text-white"></i>
+      <i className="fas fa-caret-down dark:text-light"></i>
     </div>
   );
 }
