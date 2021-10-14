@@ -1,11 +1,15 @@
 import Map from "../components/Map";
-import { ScrollableItem, ScrollableList } from "../components/ScrollableList";
+import ScrollableFilters, {
+  ScrollableItem,
+} from "../components/ScrollableList";
+import TripCard from "../components/TripCard";
+import useTrips from "../context/TripsContext";
 
 const dataItems: ScrollableItem[] = [
   {
     iconClassName: "fas fa-envelope",
     name: "Lodging",
-    isActive: true,
+    isActive: false,
   },
   {
     iconClassName: "fas fa-truck",
@@ -15,7 +19,7 @@ const dataItems: ScrollableItem[] = [
   {
     iconClassName: "fas fa-truck",
     name: "Tickets",
-    isActive: true,
+    isActive: false,
   },
   {
     iconClassName: "fas fa-truck",
@@ -25,6 +29,7 @@ const dataItems: ScrollableItem[] = [
 ];
 
 export default function Home() {
+  const { trips } = useTrips();
   return (
     <div className=" dark:text-white px-6 py-4 text-sm w-full h-full">
       <div className="md:flex w-full h-full">
@@ -44,7 +49,12 @@ export default function Home() {
             </p>
           </div>
           <div className="my-6">
-            <ScrollableList items={dataItems} />
+            <ScrollableFilters items={dataItems} />
+          </div>
+          <div className="block w-full space-y-6">
+            {trips.map((each) => {
+              return <TripCard key={each.id} trip={each} />;
+            })}
           </div>
         </div>
         <div className="md:w-1/2">
