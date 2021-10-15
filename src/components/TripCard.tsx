@@ -1,6 +1,7 @@
-import { PropsWithoutRef, useState } from "react";
+import { PropsWithoutRef } from "react";
 import SkiTrip from "../interfaces/SkiTrip";
 import DetermineRatingName from "../lib/DetermineRatingName";
+import ImageCarousel from "./ImageCarousel";
 
 interface TripCardProps {
   trip: SkiTrip;
@@ -11,16 +12,10 @@ export default function TripCard({
   trip,
   onButtonClick,
 }: PropsWithoutRef<TripCardProps>) {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
   return (
-    <div className="bg-darker w-full px-4 py-2 rounded-md flex space-x-4 flex-1">
-      <div className="overflow-hidden object-contain rounded-md w-36 h-full ">
-        <img
-          className="h-full"
-          src={trip.imageUrl[selectedImageIndex]}
-          alt={`${trip.name} image`}
-        />
+    <div className="bg-darker w-full px-4 py-2 rounded-md flex space-x-4 flex-1 select-none cursor-pointer transition-all hover:bg-darker-dark">
+      <div className="w-1/2 sm:w-1/3">
+        <ImageCarousel imagesArray={trip.imageUrl} />
       </div>
 
       {/* ------ Card Header and Favorite button ------ */}
@@ -28,7 +23,7 @@ export default function TripCard({
       <div className="grid w-full space-y-2">
         <div className="flex justify-between items-center">
           <div className="w-full overflow-ellipsis grid items-start">
-            <h3 className="text-lg font-bold dark:text-white text-darker capitalize">
+            <h3 className="md:text-2xl sm:text-lg font-bold dark:text-white text-darker capitalize">
               {trip.name}
             </h3>
             {trip.capacity > 0 && (
@@ -57,7 +52,7 @@ export default function TripCard({
         {/* ------ Reviews and total ------ */}
 
         <div className="flex justify-between items-center">
-          <p className="space-x-2">
+          <p className="space-x-2 overflow-ellipsis w-1/2">
             <span>
               <i className="fas fa-binoculars text-sm text-light" />
             </span>
@@ -66,7 +61,9 @@ export default function TripCard({
             <span className="text-light">({trip.reviews ?? 0} reviews)</span>
           </p>
           <div>
-            <p className="text-lg font-bold">$ {trip.price.toPrecision(3)} </p>
+            <p className="text-md md:text-lg font-bold">
+              $ {trip.price.toPrecision(3)}{" "}
+            </p>
             <p className="text-xs font-normal text-light">per night</p>
           </div>
         </div>

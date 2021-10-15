@@ -31,9 +31,9 @@ const dataItems: ScrollableItem[] = [
 export default function Home() {
   const { trips } = useTrips();
   return (
-    <div className=" dark:text-white px-6 py-4 text-sm w-full h-full">
-      <div className="md:flex w-full h-full">
-        <div className="md:w-1/2 h-full">
+    <div className=" dark:text-white px-6 py-4 text-sm w-full ">
+      <div className="flex flex-col lg:flex-row space-y-12 lg:space-x-12">
+        <div className="w-full h-full">
           <div>
             <p className="text-light">
               10 stats <span className="mx-4">May 21 - 22</span> 2 guests
@@ -57,8 +57,8 @@ export default function Home() {
             })}
           </div>
         </div>
-        <div className="md:w-1/2">
-          <Map />
+        <div className=" w-full h-layout-screen lg:h-auto rounded-lg">
+          <Map className="rounded-lg overflow-hidden" />
         </div>
       </div>
     </div>

@@ -9,7 +9,11 @@ module.exports = {
       primary: "#242132",
       secondary: "#1F1C2D",
       accent: "#F59E0B",
-      darker: "#35333E",
+      darker: {
+        light: "#393742",
+        DEFAULT: "#35333E",
+        dark: "#2e2c36",
+      },
     },
     extend: { ...defaultTheme },
   },

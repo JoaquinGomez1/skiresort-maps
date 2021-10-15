@@ -9,9 +9,9 @@ export default function Layout(props: PropsWithChildren<LayoutProps>) {
   return (
     <div className="flex w-full">
       <Sidebar items={sidebarItems}></Sidebar>
-      <div className="flex flex-col overflow-hidden pt-4 w-screen">
+      <div className="pt-4 overflow-auto w-screen">
         <PageHeader />
-        <div className="page-full h-screen">{props.children}</div>
+        <div>{props.children}</div>
       </div>
     </div>
   );

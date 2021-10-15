@@ -23,10 +23,14 @@ html {
   box-sizing: border-box;
 }
 
-page-min {
-  width: calc(100vw - 6rem);
+.page-min {
+  width: calc(100vw - 6rem) !important;
 }
 
-page-full {
-  width: calc(100vw - 12rem);
+.page-full {
+  width: calc(100vw - 12rem) !important;
+}
+
+.h-layout-screen {
+  height: calc(100vh - 5rem);
 }
