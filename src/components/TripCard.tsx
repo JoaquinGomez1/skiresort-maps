@@ -5,7 +5,8 @@ import ImageCarousel from "./ImageCarousel";
 
 interface TripCardProps {
   trip: SkiTrip;
-  onButtonClick?: (id: string) => void;
+  onButtonClick?: (event: any, trip: SkiTrip) => void;
+  redirectUrl?: string;
 }
 
 export default function TripCard({
@@ -31,11 +32,11 @@ export default function TripCard({
             )}
           </div>
           <button
-            onClick={() => onButtonClick && onButtonClick(trip.id)}
+            onClick={(e) => onButtonClick && onButtonClick(e, trip)}
             className={`${
               trip.isFavorite
-                ? "bg-pink-500 text-white"
-                : "bg-light text-darker"
+                ? "bg-pink-500 text-white hover:bg-pink-600"
+                : "bg-light text-darker hover:bg-gray-200"
             } px-2 py-2 rounded-full flex items-center`}
           >
             <i className="fas fa-heart "></i>

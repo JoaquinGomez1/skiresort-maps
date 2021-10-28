@@ -1,5 +1,6 @@
 // TODO: Delete all of this file's references when an api is set up
 
+import Features from "../interfaces/Features";
 import SkiTrip from "../interfaces/SkiTrip";
 
 const SkiTrips: SkiTrip[] = [
@@ -16,6 +17,7 @@ const SkiTrips: SkiTrip[] = [
     name: "say my name",
     reviews: 188,
     rating: 4.3,
+    features: [Features.LODGING, Features.SKI_ITEMS],
   },
   {
     id: "2",
@@ -31,11 +33,15 @@ const SkiTrips: SkiTrip[] = [
     name: "Patagonia",
     rating: 3.9,
     reviews: 168,
+    features: [Features.TICKETS, Features.LODGING],
   },
   {
     id: "3",
     imageUrl: [
       "https://powderquest.com/wp-content/uploads/las-lenas-resort.jpg",
+      "https://purewows3.imgix.net/images/articles/2019_12/best-ski-resorts-in-the-world-whistler.jpg?auto=format,compress&cs=strip",
+      "https://visitutahkenticoprod.blob.core.windows.net/cmsroot/visitutah/media/site-assets/winter-photography/ski-resorts/powder-mountain/ski-resorts_powdermountain_adamclark_2020-15_large_1.jpg",
+      "https://i1.wp.com/www.agoda.com/wp-content/uploads/2020/01/Best-US-ski-resorts-Squaw-Valley-Resort-California.jpg?ssl=1",
     ],
     isFavorite: false,
     capacity: 4,
@@ -45,6 +51,22 @@ const SkiTrips: SkiTrip[] = [
     name: "Utah Ski Park",
     reviews: 84,
     rating: 4.8,
+    features: [Features.BREAKFAST, Features.LODGING, Features.SKI_ITEMS],
+  },
+  {
+    id: "4",
+    imageUrl: [
+      "https://powderquest.com/wp-content/uploads/las-lenas-resort.jpg",
+    ],
+    isFavorite: false,
+    capacity: 4,
+    price: 400,
+    location: { lat: 1, lng: 1 },
+    locationName: "Utah",
+    name: "Laguna mar chikito",
+    reviews: 84,
+    rating: 4.8,
+    features: [Features.BREAKFAST, Features.SKI_ITEMS],
   },
 ];
 

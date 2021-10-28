@@ -10,7 +10,7 @@ export default function Sidebar({ items }: SideBarProps) {
   const location = useLocation();
 
   return (
-    <div className="sticky top-0 flex flex-col w-24 md:w-48 h-screen dark:bg-secondary items-center md:items-start">
+    <div className="sticky top-0 hidden sm:flex flex-col w-24 md:w-48 h-screen dark:bg-secondary items-center md:items-start">
       <div className="px-6 pl-8 pr-8 pt-8">
         <Logo />
         <p className="text-gray-600 mt-8 hidden md:block">Menu</p>
