@@ -4,21 +4,21 @@ import SkiTrip from "../interfaces/SkiTrip";
 
 interface TripsContextProviderInterface {
   trips: SkiTrip[];
-  setTrips: React.Dispatch<React.SetStateAction<SkiTrip[]>>;
   areTripsLoading: boolean;
-  setAreTripsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setTrips?: React.Dispatch<React.SetStateAction<SkiTrip[]>>;
+  setAreTripsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const TripsContextProvider =
   createContext<TripsContextProviderInterface>(undefined!);
 
 export function TripsContext(props: PropsWithChildren<any>) {
-  const [trips, setTrips] = useState<SkiTrip[]>(SkiTrips);
-  const [areTripsLoading, setAreTripsLoading] = useState(true);
+  const [trips] = useState<SkiTrip[]>(SkiTrips);
+  const [areTripsLoading] = useState(true);
 
   return (
     <TripsContextProvider.Provider
-      value={{ trips, setTrips, areTripsLoading, setAreTripsLoading }}
+      value={{ trips, areTripsLoading }}
       {...props}
     >
       {props.children}

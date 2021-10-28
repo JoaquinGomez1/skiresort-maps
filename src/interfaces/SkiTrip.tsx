@@ -1,3 +1,4 @@
+import Features from "./Features";
 import Trip from "./Trip";
 
 export default interface SkiTrip extends Trip {
@@ -5,4 +6,5 @@ export default interface SkiTrip extends Trip {
   rating: number;
   capacity: number;
   reviews?: number;
+  features?: Features[];
 }

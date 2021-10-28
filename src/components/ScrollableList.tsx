@@ -1,24 +1,34 @@
 import { useState } from "react";
+import Features from "../interfaces/Features";
 
 export interface ScrollableItem {
   iconClassName: string;
-  name: string;
+  name: Features;
   isActive: boolean;
+}
+
+interface ScrollableFiltersProps {
+  items: ScrollableItem[];
+  onItemClicked?: (name: Features, wasSelected: boolean) => void;
 }
 
 export default function ScrollabeFilters({
   items,
-}: {
-  items: ScrollableItem[];
-}) {
+  onItemClicked,
+}: ScrollableFiltersProps) {
   const [itemsList, setItemsList] = useState<Array<ScrollableItem>>(
     items ?? []
   );
 
   const setActive = (index: number) => {
     // Update array value and trigger a re render
-    itemsList[index].isActive = !itemsList[index].isActive;
+    const toogleValue = !itemsList[index].isActive;
+    itemsList[index].isActive = toogleValue;
+    const wasSelected = toogleValue;
+
+    console.log({ wasSelected });
     setItemsList([...itemsList]);
+    if (onItemClicked) onItemClicked(itemsList[index].name, wasSelected);
   };
 
   return (
@@ -27,12 +37,14 @@ export default function ScrollabeFilters({
         <div
           onClick={() => setActive(index)}
           className={`p-2 px-4 flex items-center cursor-pointer select-none border border-darker ${
-            each.isActive ? "bg-darker" : ""
+            each.isActive
+              ? "bg-darker hover:bg-darker-dark"
+              : "hover:bg-darker-light"
           } rounded-md space-x-2 `}
         >
           <div
             className={`${
-              each.isActive ? "bg-accent" : "bg-darker"
+              each.isActive ? "bg-accent" : "bg-darker "
             } rounded-full px-3 py-2 flex items-center justify-center`}
           >
             <i className={`${each.iconClassName} text-white`} />
