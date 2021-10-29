@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import useDarkModeProvider from "../context/ThemeProvider";
 import { SideBarItem } from "../interfaces/SidebarItem";
 import Logo from "./Logo";
 
@@ -8,9 +9,10 @@ interface SideBarProps {
 
 export default function Sidebar({ items }: SideBarProps) {
   const location = useLocation();
+  const { darkModeValue, setDarkModeValue } = useDarkModeProvider();
 
   return (
-    <div className="sticky top-0 hidden sm:flex flex-col w-24 md:w-48 h-screen dark:bg-secondary items-center md:items-start">
+    <div className="sticky top-0 hidden sm:flex flex-col w-24 md:w-48 h-screen dark:bg-secondary bg-gray-300 items-center md:items-start">
       <div className="px-6 pl-8 pr-8 pt-8">
         <Logo />
         <p className="text-gray-600 mt-8 hidden md:block">Menu</p>
@@ -45,9 +47,14 @@ export default function Sidebar({ items }: SideBarProps) {
           })}
         </div>
       </div>
-      <div className="flex px-6 pb-6 items-center space-x-2 select-none cursor-pointer">
+      <div
+        className="flex px-6 pb-6 items-center space-x-2 select-none cursor-pointer"
+        onClick={() => setDarkModeValue(!darkModeValue)}
+      >
         <div className="p-2 bg-green-600 rounded-full">B</div>
-        <p className="text-gray-400 text-sm">Night Mode</p>
+        <p className="text-gray-400 text-sm">
+          {!darkModeValue ? "Night Mode" : "Light Mode"}
+        </p>
       </div>
     </div>
   );

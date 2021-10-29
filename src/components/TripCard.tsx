@@ -14,7 +14,7 @@ export default function TripCard({
   onButtonClick,
 }: PropsWithoutRef<TripCardProps>) {
   return (
-    <div className="bg-darker w-full px-4 py-2 rounded-md flex space-x-4 flex-1 select-none cursor-pointer transition-all hover:bg-darker-dark">
+    <div className="bg-gray-100 dark:bg-darker w-full px-4 py-2 rounded-md flex space-x-4 flex-1 select-none cursor-pointer transition-all hover:bg-gray-300 dark:hover:bg-darker-dark">
       <div className="w-1/2 sm:w-1/3">
         <ImageCarousel imagesArray={trip.imageUrl} />
       </div>
@@ -36,7 +36,7 @@ export default function TripCard({
             className={`${
               trip.isFavorite
                 ? "bg-pink-500 text-white hover:bg-pink-600"
-                : "bg-light text-darker hover:bg-gray-200"
+                : "dark:bg-light bg-gray-200 text-darker hover:bg-gray-200 dark:hover:bg-gray-500"
             } px-2 py-2 rounded-full flex items-center`}
           >
             <i className="fas fa-heart "></i>
