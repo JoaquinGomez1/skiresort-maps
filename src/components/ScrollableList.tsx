@@ -36,10 +36,10 @@ export default function ScrollabeFilters({
       {itemsList.map((each, index) => (
         <div
           onClick={() => setActive(index)}
-          className={`p-2 px-4 flex items-center cursor-pointer select-none border border-darker ${
+          className={`p-2 px-4 flex items-center cursor-pointer select-none border dark:border-darker hover:bg-gray-200 dark:hover:bg-darker-light ${
             each.isActive
-              ? "bg-darker hover:bg-darker-dark"
-              : "hover:bg-darker-light"
+              ? "dark:bg-darker  dark:hover:bg-darker-dark bg-gray-100 "
+              : "hover:bg-darker-light "
           } rounded-md space-x-2 `}
         >
           <div

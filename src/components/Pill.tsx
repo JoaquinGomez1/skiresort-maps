@@ -7,7 +7,7 @@ interface PillProps {
 export default function Pill({ imageUrl, name, action }: PillProps) {
   return (
     <div
-      className="flex items-center cursor-pointer text-sm hover:bg-gray-700 py-1 rounded-sm select-none space-x-4 px-3 justify-between"
+      className="flex items-center cursor-pointer text-sm hover:bg-gray-300 dark:hover:bg-gray-700 py-1 rounded-sm select-none space-x-4 px-3 justify-between"
       onClick={action}
     >
       <div className="flex space-x-2 items-center">
