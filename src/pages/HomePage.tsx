@@ -7,7 +7,7 @@ import ScrollableFilters, {
   ScrollableItem,
 } from "../components/ScrollableList";
 import TripCard from "../components/TripCard";
-import useTrips from "../context/TripsContext";
+import { useAppSelector } from "../hooks/reduxHooks";
 import Features from "../interfaces/Features";
 import SkiTrip from "../interfaces/SkiTrip";
 
@@ -35,8 +35,8 @@ const dataItems: ScrollableItem[] = [
 ];
 
 export default function Home() {
-  const { trips } = useTrips();
-  const [scopedTrips, setScopedTrips] = useState<SkiTrip[]>(trips);
+  const trips = useAppSelector((state) => state.skiTrips.skiTrips);
+  const [scopedTrips, setScopedTrips] = useState(trips);
 
   const toogleFavorite = (e: any, trip: SkiTrip) => {
     e.preventDefault();
