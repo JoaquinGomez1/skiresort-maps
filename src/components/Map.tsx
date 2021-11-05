@@ -1,4 +1,4 @@
-import { CSSProperties, PropsWithRef } from "react";
+import { CSSProperties, PropsWithChildren } from "react";
 import GoogleMapReact, { Coords } from "google-map-react";
 import Location from "../interfaces/Location";
 
@@ -9,11 +9,12 @@ interface MapProps {
   style?: CSSProperties;
 }
 
-function Map(props: PropsWithRef<MapProps>) {
+function Map(props: PropsWithChildren<MapProps>) {
   const defaultCenter: Location = {
-    lat: 59.95,
-    lng: 30.33,
+    lat: -31.5466105642452,
+    lng: -64.33647312816072,
   };
+
   return (
     <div style={{ height: "100%", width: "100%" }} {...props}>
       <GoogleMapReact
@@ -22,7 +23,9 @@ function Map(props: PropsWithRef<MapProps>) {
         }}
         defaultCenter={props.center ?? defaultCenter}
         defaultZoom={props.zoom ?? 11}
-      ></GoogleMapReact>
+      >
+        {props.children}
+      </GoogleMapReact>
     </div>
   );
 }

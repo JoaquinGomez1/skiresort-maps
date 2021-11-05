@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import CustomMarker from "../components/CustomMarker";
 import Map from "../components/Map";
 import PageHeader from "../components/PageHeader";
 import ScrollableFilters, {
@@ -84,7 +85,11 @@ export default function Home() {
               {scopedTrips.length >= 1 &&
                 scopedTrips.map((each) => {
                   return (
-                    <Link to={`/trips/${each.id}`} className="block">
+                    <Link
+                      key={each.id}
+                      to={`/trips/${each.id}`}
+                      className="block"
+                    >
                       <TripCard
                         key={each.id}
                         trip={each}
@@ -102,7 +107,15 @@ export default function Home() {
             </div>
           </div>
           <div className=" w-full h-layout-screen rounded-lg">
-            <Map className="rounded-lg overflow-hidden" />
+            <Map className="rounded-lg overflow-hidden">
+              {scopedTrips.map((trip) => (
+                <CustomMarker
+                  key={trip.id}
+                  lat={trip.location.lat}
+                  lng={trip.location.lng}
+                />
+              ))}
+            </Map>
           </div>
         </div>
       </div>

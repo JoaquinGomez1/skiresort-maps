@@ -1,12 +1,20 @@
-import { createContext, PropsWithChildren, useContext, useState } from "react";
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import SkiTrips from "../constants/skiTrips";
 import SkiTrip from "../interfaces/SkiTrip";
+import Trip from "../interfaces/Trip";
 
 interface TripsContextProviderInterface {
   trips: SkiTrip[];
   areTripsLoading: boolean;
   setTrips?: React.Dispatch<React.SetStateAction<SkiTrip[]>>;
   setAreTripsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
+  tripsFunctions: { getTripById: (id: string) => Trip };
 }
 
 export const TripsContextProvider =
@@ -16,9 +24,18 @@ export function TripsContext(props: PropsWithChildren<any>) {
   const [trips] = useState<SkiTrip[]>(SkiTrips);
   const [areTripsLoading] = useState(true);
 
+  const tripsFunctions = useMemo(
+    () => ({
+      getTripById: (id: string) => {
+        return trips.find((x) => x.id === `${id}`);
+      },
+    }),
+    [trips]
+  );
+
   return (
     <TripsContextProvider.Provider
-      value={{ trips, areTripsLoading }}
+      value={{ trips, areTripsLoading, tripsFunctions }}
       {...props}
     >
       {props.children}

@@ -7,4 +7,5 @@ export default interface Trip {
   location: Location;
   locationName: string;
   price: number;
+  description: string;
 }

@@ -35,6 +35,7 @@ export default function ScrollabeFilters({
     <div className="flex space-x-4 overflow-x-scroll w-full bg-scroll no-scrollbar">
       {itemsList.map((each, index) => (
         <div
+          key={each.name}
           onClick={() => setActive(index)}
           className={`p-2 px-4 flex items-center cursor-pointer select-none border dark:border-darker hover:bg-gray-200 dark:hover:bg-darker-light ${
             each.isActive

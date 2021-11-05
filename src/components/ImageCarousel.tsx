@@ -29,6 +29,7 @@ export default function ImageCarousel({
                 : "text-darker opacity-30";
               return (
                 <div
+                  key={x}
                   className="bottom-0 left-0 right-0 "
                   onClick={(e) => e.preventDefault()}
                   onMouseEnter={(e) => changeSelectedIndex(e, index)}
